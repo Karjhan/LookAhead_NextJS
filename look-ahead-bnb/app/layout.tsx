@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { Nunito } from 'next/font/google'
 import Navbar from '@/components/navbar/Navbar'
+import Modal from '@/components/modals/Modal'
+import ClientOnly from '@/components/ClientOnly'
 
 const fataisie = localFont({
   src: "../public/fonts/FantaisieArtistique.ttf",
@@ -27,6 +29,7 @@ export default function RootLayout({
     <html lang="en" >
       <body className={font.className}>
         <main>
+          <Modal title="Hello World" isOpen />
           <Navbar/>
           {children}
         </main>
