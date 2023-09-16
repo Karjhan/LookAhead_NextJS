@@ -3,8 +3,9 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { Nunito } from 'next/font/google'
 import Navbar from '@/components/navbar/Navbar'
-import Modal from '@/components/modals/Modal'
 import ClientOnly from '@/components/ClientOnly'
+import RegisterModal from '@/components/modals/RegisterModal'
+import ThreeCirclesSpinner from '@/components/spinners/ThreeCirclesSpinner'
 
 const fataisie = localFont({
   src: "../public/fonts/FantaisieArtistique.ttf",
@@ -28,8 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en" >
       <body className={font.className}>
+        <ThreeCirclesSpinner isLoading={false}/>
         <main>
-          <Modal title="Hello World" isOpen />
+          <RegisterModal/>
           <Navbar/>
           {children}
         </main>
