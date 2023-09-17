@@ -4,12 +4,14 @@ import { AiFillGithub } from "react-icons/ai"
 import { FcGoogle } from "react-icons/fc"
 import { useCallback, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
-import useRegisterModal from "@/utils/UseRegisterModal"
+import useRegisterModal from "@/utils/hooks/UseRegisterModal"
 import Modal from "./Modal"
 import { newspaper } from '@/utils/ModalAnimations'
 import Heading from "../Heading"
 import localFont from 'next/font/local'
 import Input from "../inputs/Input"
+import { toast } from "react-hot-toast"
+import Button from "../Button"
 
 const fataisie = localFont({
     src: "../../public/fonts/FantaisieArtistique.ttf",
@@ -19,7 +21,7 @@ const fataisie = localFont({
 const RegisterModal = () => {
     const registerModal = useRegisterModal()
     const [isLoading, setIsLoading] = useState(false)
-    const { 
+    const {
         register,
         handleSubmit,
         formState: {
@@ -29,7 +31,7 @@ const RegisterModal = () => {
         defaultValues: {
             name: "",
             email: "",
-            password:""
+            password: ""
         }
     })
 
@@ -45,11 +47,15 @@ const RegisterModal = () => {
         }).then(() => {
             registerModal.onClose()
         }).catch((error) => {
-            console.log(error)
+            toast.error("Something went wrong!")
         }).finally(() => {
             setIsLoading(false)
         })
     }
+
+    const onToggle = useCallback(() => {
+        registerModal.onClose();
+    }, [registerModal])
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -69,8 +75,21 @@ const RegisterModal = () => {
         </div>
     )
 
+    const footerContent = (
+        <div className="flex flex-col gap-4 mt-3">
+            <hr />
+            <Button outline label="Continue with Google" icon={FcGoogle} onClick={() => { }} />
+            <Button outline label="Continue with GitHub" icon={AiFillGithub} onClick={() => { }} />
+            <div className="text-neutral-500 text-center mt-4 font-light">
+                <p>Already have an account? 
+                    <span onClick={onToggle} className="text-neutral-800 cursor-pointer hover:underline pl-2">Log in</span>
+                </p>
+            </div>
+        </div>
+    )
+
     return (
-        <Modal body={bodyContent} animation={newspaper} disabled={isLoading} isOpen={registerModal.isOpen} title="Register Form" actionLabel="Continue" onClose={registerModal.onClose} onSubmit={handleSubmit(onSubmit)} secondaryAction={() => {}}/>
+        <Modal footer={footerContent} body={bodyContent} animation={newspaper} disabled={isLoading} isOpen={registerModal.isOpen} title="Register Form" actionLabel="Continue" onClose={registerModal.onClose} onSubmit={handleSubmit(onSubmit)} secondaryAction={() => { }} />
     )
 }
 

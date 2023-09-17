@@ -4,15 +4,15 @@ import { AiOutlineMenu } from "react-icons/ai"
 import Avatar from "../Avatar"
 import { useState, useCallback } from "react"
 import MenuItem from "./MenuItem"
-import useRegisterModal from "@/utils/UseRegisterModal"
+import useRegisterModal from "@/utils/hooks/UseRegisterModal"
 
 const UserMenu = () => {
     const [isOpen, setIsOpen] = useState(false)
     const registerModal = useRegisterModal()
-    
+
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value)
-    },[])
+    }, [])
 
     return (
         <div className="relative">
@@ -21,9 +21,9 @@ const UserMenu = () => {
                     BnB Your Home
                 </div>
                 <div onClick={toggleOpen} className="p-4 md:py-1 md:px-3 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
-                    <AiOutlineMenu/>
+                    <AiOutlineMenu />
                     <div className="hidden md:block">
-                        <Avatar/>
+                        <Avatar />
                     </div>
                 </div>
             </div>

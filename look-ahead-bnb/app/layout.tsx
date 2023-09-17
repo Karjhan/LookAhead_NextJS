@@ -6,6 +6,7 @@ import Navbar from '@/components/navbar/Navbar'
 import ClientOnly from '@/components/ClientOnly'
 import RegisterModal from '@/components/modals/RegisterModal'
 import ThreeCirclesSpinner from '@/components/spinners/ThreeCirclesSpinner'
+import ToasterProvider from '@/utils/providers/ToasterProvider'
 
 const fataisie = localFont({
   src: "../public/fonts/FantaisieArtistique.ttf",
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={font.className}>
         <ThreeCirclesSpinner isLoading={false}/>
         <main>
+          <ToasterProvider/>
           <RegisterModal/>
           <Navbar/>
           {children}
