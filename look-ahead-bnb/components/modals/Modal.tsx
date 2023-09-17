@@ -74,15 +74,15 @@ const Modal: React.FC<ModalProps> = ({
                         <div className={`translate duration-300 ${showModal ? 'translate-y-0' : 'translate-y-full'} ${showModal ? "opacity-100" : "opacity-0"} h-full`}>
                             <motion.div
                                 onClick={(e) => e.stopPropagation()}
-                                className="duration-300 h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+                                className="duration-300 h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-slate-900 outline-none focus:outline-none"
                                 variants={animation}
                                 initial="hidden"
                                 animate="visible"
                                 exit="exit"
                             >
-                                <div className="flex items-center p-6 rounded-t justify-center relative border-b-[2px]">
+                                <div className="flex items-center p-6 rounded-t justify-center relative border-b-[2px] text-orange-200">
                                     <motion.button whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.8 }} onClick={handleClose} className="p-1 border-0 hover:opacity-80 transition absolute left-9">
-                                        <IoMdClose size={18} />
+                                        <IoMdClose size={20} color={"wheat"} />
                                     </motion.button>
                                     <div className="text-lg font-semibold">
                                         {title}
@@ -96,7 +96,7 @@ const Modal: React.FC<ModalProps> = ({
                                         {secondaryActionLabel && (
                                             <Button outline disabled={disabled} label={secondaryActionLabel} onClick={handleSecondaryAction} />
                                         )}
-                                        <Button disabled={disabled} label={actionLabel} onClick={handleSubmit} />
+                                        <Button gradientBorder={true} disabled={disabled} label={actionLabel} onClick={handleSubmit} />
                                     </div>
                                     {footer}
                                 </div>

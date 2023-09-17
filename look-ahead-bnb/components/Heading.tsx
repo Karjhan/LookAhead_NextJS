@@ -12,11 +12,11 @@ const Heading: React.FC<HeadingProps> = ({
 }) => {
     return (
         <div className={`${center ? "text-center" : "text-start"}`}>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-bold text-orange-200">
                 {title}
             </div>
             {subtitle && (
-                <div className="font-light text-neutral-500">
+                <div className="font-light text-orange-200">
                     {subtitle}
                 </div>
             )}

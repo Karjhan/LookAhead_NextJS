@@ -59,18 +59,18 @@ const RegisterModal = () => {
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
-            <Heading title={(<p>Welcome to <span className={`${fataisie.className} font-medium text-3xl`}>Look-Ahead-BnB</span></p>)} subtitle="Register your new account!" />
+            <Heading title={(<p>Welcome to <span className={`${fataisie.className} font-medium text-3xl text-orange-300`}>Look-Ahead-BnB</span></p>)} subtitle="Register your new account!" />
             <Input id="email" label="Email" disabled={isLoading} register={register} errors={errors} required />
             {errors["email"] && (
-                <p className="text-rose-900 text-semibold text-md pl-3">{errors["email"].message}</p>
+                <p className="text-rose-500 text-semibold text-md pl-3">{errors["email"].message}</p>
             )}
             <Input id="name" label="Name" disabled={isLoading} register={register} errors={errors} required />
             {errors["name"] && (
-                <p className="text-rose-900 text-semibold text-md pl-3">{errors["name"].message}</p>
+                <p className="text-rose-500 text-semibold text-md pl-3">{errors["name"].message}</p>
             )}
             <Input id="password" type={"password"} label="Password" disabled={isLoading} register={register} errors={errors} required />
             {errors["password"] && (
-                <p className="text-rose-900 text-semibold text-md pl-3">{errors["password"].message}</p>
+                <p className="text-rose-500 text-semibold text-md pl-3">{errors["password"].message}</p>
             )}
         </div>
     )
@@ -80,9 +80,9 @@ const RegisterModal = () => {
             <hr />
             <Button outline label="Continue with Google" icon={FcGoogle} onClick={() => { }} />
             <Button outline label="Continue with GitHub" icon={AiFillGithub} onClick={() => { }} />
-            <div className="text-neutral-500 text-center mt-4 font-light">
+            <div className="text-orange-200 text-center mt-4 font-light">
                 <p>Already have an account? 
-                    <span onClick={onToggle} className="text-neutral-800 cursor-pointer hover:underline pl-2">Log in</span>
+                    <span onClick={onToggle} className="text-orange-300 cursor-pointer hover:underline pl-2">Log in</span>
                 </p>
             </div>
         </div>
